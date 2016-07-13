@@ -26,13 +26,29 @@ def make_chains(text_string):
         {('hi', 'there'): ['mary', 'juanita'], ('there', 'mary'): ['hi'], ('mary', 'hi': ['there']}
     """
 
+    # chains = {}
+    # words = text_string.split()
+
+    # for word in words:
+    #     chains[(words[i], words[i+1])] = [words[i+2]]
+    # return chains
+
+    # create an empty dictionary
     chains = {}
+    # going through file and spliting every word into diff.objects
     words = text_string.split()
 
-    for word in words:
-        chains[(words[i], words[i+1])] = [words[i+2]]
+    # use iterate to go over every index but stop two words before the end
+    for i in range(len(words)-2):
+        # pass our key(tuple) to a variable key
+        key = (words[i], words[i+1]) 
+        # iterate over every key(tuple) and using .get function to see if the key exists,
+        # re-assign the key and use .get function to go over every key, if it does exist,
+        # return the key if it doesn't exist return an empty list.
+        chains[key] = chains.get(key, [])
+        # if key in chains appendto its value.
+        chains[key].append(words[i+2])
     return chains
-
 
 def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
