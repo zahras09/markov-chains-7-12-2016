@@ -1,4 +1,6 @@
 from random import choice
+import sys
+
 
 
 def open_and_read_file(file_path):
@@ -51,6 +53,7 @@ def make_chains(text_string):
 
 def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
+    n_gram = raw_input("")
     #creates empty list
     words = []
     #picks random key and stores in variable
@@ -85,7 +88,9 @@ def make_text(chains):
     return text
 
 
-input_path = "gettysburg.txt"
+input_path = 'poems.txt'
+
+# sys.argv[0]
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
