@@ -8,9 +8,17 @@ def make_chains(text_string):
 
 
     for i in range(len(words)-2):
-        chains[(words[i], words[i+1])] = [words[i+2]]
+        key = (words[i], words[i+1]) 
+        chains[key] = [words[i+2]]
         duplicates = chains.get(key, [])
-        duplicates.append(words[i+2])
-        chains[key] = duplicates
-        return chains
+        duplicates.append([words[i+2]])
+        # chains[key] = duplicates
+    print chains
 
+input_path = "green-eggs.txt"
+
+# Open the file and turn it into one long string
+input_text = open_and_read_file(input_path)
+
+# Get a Markov chain
+chains = make_chains(input_text)
